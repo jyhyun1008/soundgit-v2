@@ -1,12 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Controller from "@/components/Controller"
+import Player from "@/components/Player"
 
 export async function generateMetadata() {
  
   return {
-    title: `SoundGit - ${process.env.ARTIST}`,
-    description: `Welcome to ${process.env.ARTIST}'s sound world!`,
+    title: `SoundGit - ${process.env.NEXT_PUBLIC_ARTIST}`,
+    description: `Welcome to ${process.env.NEXT_PUBLIC_ARTIST}'s sound world!`,
     openGraph: {
       images: ['/logo.png'],
     },
@@ -17,23 +15,25 @@ let musicList = []
 
 export default async function Home() {
 
-  var result1 = await fetch('http://localhost:3000/api/getFile')
+  var result1 = await fetch(`https://api.github.com/repos/${process.env.NEXT_PUBLIC_GITHUB}/${process.env.NEXT_PUBLIC_REPO}/git/trees/main?recursive=1`)
   var folderList = await result1.json()
-  musicList = folderList.files
   
+  for (let folder of folderList.tree) {
+      if (folder.path == 'mp3') {
+          var result2 = await fetch(folder.url)
+          var audioList = await result2.json()
+
+          for (let audio of audioList.tree) {
+              if (audio.path.includes('.mp3')) {
+                  //musicList.push(`https://github.com/${USERNAME}/${REPONAME}/raw/refs/heads/main/mp3/${audio.path}`)
+                  musicList.push(`${audio.path.split('.')[0]}`)
+              }
+          }
+      }
+  }
   return (
     <div id="app">
-      <div id="wrapper">
-          <div id="nav-box">
-              <div id="title-box">
-                  <h1 id="title"><a href="/">Sound-Git</a></h1>
-              </div>
-              <div id="menu-box">
-                  <a href="/about">About</a>
-              </div>
-          </div>
-          <Controller audio={musicList} />
-      </div>
-  </div>
+        <Player audio={musicList} />
+    </div>
   );
 }

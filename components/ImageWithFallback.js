@@ -17,8 +17,8 @@ export default function ImageWithFallback({
       <Image
         alt={alt ? alt : 'alt'}
         onError={setError}
-        width={200}
-        height={200}
+        width={256}
+        height={256}
         src={error ? fallback : src}
         {...props}
       />

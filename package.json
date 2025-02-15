@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "boxicons": "^2.1.4",
+    "html-react-parser": "^5.2.2",
+    "marked": "^15.0.7",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
