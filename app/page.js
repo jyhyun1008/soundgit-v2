@@ -19,7 +19,7 @@ export default async function Home() {
   var folderList = await result1.json()
   
   for (let folder of folderList.tree) {
-      if (folder.path == 'mp3') {
+      if (folder.path == 'public') {
           var result2 = await fetch(folder.url)
           var audioList = await result2.json()
 
