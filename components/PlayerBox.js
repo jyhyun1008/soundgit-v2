@@ -1,8 +1,6 @@
 'use client'
 import ImageWithFallback from "./ImageWithFallback";
-import { useState, useRef, useEffect, useCallback } from "react";
-import Router from "next/router";
-import List from "./List";
+import { useState, useRef } from "react";
 
 export default function PlayerBox(props) {
     

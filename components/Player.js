@@ -1,7 +1,5 @@
 'use client'
-import ImageWithFallback from "./ImageWithFallback";
-import { useState, useRef, useEffect, useCallback } from "react";
-import Router from "next/router";
+import { useState, useRef, useEffect } from "react";
 import List from "./List";
 import PlayerBox from "./PlayerBox";
 import About from "./About";
@@ -56,8 +54,6 @@ export default function Player(props) {
         }
         
     })
-
-    //setNowPlay(nowPlayingRef.current.innerText)
 
     if (!props.audio) {
         return (

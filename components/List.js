@@ -1,6 +1,6 @@
 'use client'
 import ImageWithFallback from "./ImageWithFallback";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export default function List({list, nowPlaying}) {
     
