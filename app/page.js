@@ -11,7 +11,7 @@ export async function generateMetadata() {
   }
 }
 
-let musicList = process.env.NEXT_PUBLIC_SONGLIST
+let musicList = process.env.NEXT_PUBLIC_SONGLIST.split(',')
 
 export default function Home() {
 
