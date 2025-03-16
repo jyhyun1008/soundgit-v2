@@ -19,7 +19,6 @@ export default function PlayerBox(props) {
     var currentPlaying = {}
     const [isFirstPlay, setIsFirstPlay] = useState(true)
 
-
     const playBarContoller = function () {
         const timeAudio = () => {
             const duration = audioRef.current.duration || 0;
